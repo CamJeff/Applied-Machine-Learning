@@ -1,0 +1,78 @@
+:root{
+  --bg:#ffffff;--text:#0f172a;--muted:#475569;--border:#e2e8f0;--accent:#0ea5e9;--accent-weak:#e0f2fe;--sidebar-bg:#f8fafc;
+}
+html,body{height:100%}
+body{
+  margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  background:var(--bg);color:var(--text);line-height:1.6;
+}
+
+/* Layout */
+.app{display:grid;grid-template-columns:280px 1fr;grid-template-rows:auto 1fr;min-height:100vh;grid-template-areas:"header header" "sidebar main";}
+header{grid-area:header;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border);}
+.header-inner{display:grid;grid-template-columns:280px 1fr 280px;align-items:center;gap:16px;padding:14px 20px;max-width:1200px;margin:0 auto;}
+.brand{font-weight:800;letter-spacing:.3px;}
+.course-title{text-align:center;font-weight:600;font-size:clamp(18px,2.2vw,22px);}
+
+/* Sidebar */
+nav.sidebar{grid-area:sidebar;border-right:1px solid var(--border);background:var(--sidebar-bg);padding:20px 16px;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;}
+.sidebar h2{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin:8px 10px 12px;}
+.nav-list{list-style:none;margin:0;padding:0;}
+.nav-item a{
+  display:block;padding:10px 12px;margin:6px 4px;border-radius:10px;text-decoration:none;color:var(--text);
+  border:1px solid transparent;transition:background 160ms ease,border-color 160ms ease,transform 120ms ease;font-weight:500;
+}
+.nav-item a:hover{background:var(--accent-weak);border-color:var(--accent);}
+.nav-item a.active{background:var(--accent-weak);border-color:var(--accent);}
+
+/* Main */
+main{grid-area:main;padding:28px clamp(16px,4vw,48px) 64px;max-width:1000px;}
+main h1,main h2,main h3{line-height:1.25;}
+.section{scroll-margin-top:90px;}
+.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px 22px;box-shadow:0 1px 2px rgba(15,23,42,.04);}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+pre{background:#0f172a;color:#e2e8f0;padding:16px;border-radius:12px;overflow:auto;}
+
+/* Mobile */
+.sidebar-toggle{display:none;border:1px solid var(--border);background:var(--bg);border-radius:10px;padding:8px 10px;font-weight:600;}
+@media (max-width:960px){
+  .app{grid-template-columns:1fr;grid-template-areas:"header" "main";}
+  .header-inner{grid-template-columns:1fr auto 1fr;}
+  nav.sidebar{position:fixed;inset:64px 0 auto 0;height:auto;max-height:60vh;border-right:none;border-bottom:1px solid var(--border);display:none;z-index:30;}
+  .sidebar-toggle{display:inline-block;}
+}
+
+/* Utility */
+.muted{color:var(--muted);}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+.spacer{height:12px;}
+
+
+/* Simple, clean code block styling */
+.code-cell {
+  /* border: 1px solid #bbb;  <-- removed */
+  border-radius: 4px;
+  margin: 2em 0;
+  overflow: hidden;
+}
+
+pre {
+  margin: 0;
+  padding: 1em;
+  background: #1e1e1e;              /* dark background like Colab */
+  overflow-x: auto;
+}
+
+code[class*="language-"] {
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.95em;
+}
+
+.centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 60%; /* optional: make it responsive */
+      height: auto;
+    }
+
